@@ -1,0 +1,318 @@
+<style>
+
+    .radioHead{
+        max-width: max-content;
+        margin: auto;
+    }
+
+    #secondImageContent {
+        max-width: max-content;
+        margin: auto;
+    }
+
+     #firstImageContent {
+        max-width: max-content;
+        margin: auto;
+    }
+
+     #thirdImageContent {
+        max-width: max-content;
+        margin: auto;
+    }
+
+
+    .regLabel{
+        font-size:12pt;
+        font-weight:bold;
+        float:left;    
+        color:#570050;
+        text-align:left;
+        width:98%;
+        margin-bottom:5px;
+        margin-top:5px;
+    }
+
+    .regDesc{
+        color:#666;
+        font-size:9pt;
+        margin-bottom:8px;
+        float:left;
+        text-align:left;
+        width:98%;            
+    }
+    .regInput{
+        float:left;
+        text-align:left;
+        width:98%;
+    }
+
+    #captcha{
+        padding: 0px;
+    }
+    #captcha .cItem {
+        margin: 3px 3px 3px 0;
+        padding: 1px;
+        float: left;
+        width: 5em;
+        height: 5em;
+        border:1px solid #333;
+        font-size: 20px;
+        text-align: center;
+        line-height:35px;
+        cursor:pointer;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+        text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+        background:#009 repeat-x scroll 50% 50%;
+        color:#fff;
+        font-weight:normal;
+    }
+
+    #captcha3 .cItem3 {
+        margin: 3px 3px 3px 0;
+        padding: 1px;
+        float: left;
+        width: 10em;
+        height: 10em;
+        border:1px solid #333;
+        font-size: 20px;
+        text-align: center;
+        line-height:35px;
+        cursor:pointer;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+        text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+        background:#009 repeat-x scroll 50% 50%;
+        color:#fff;
+        font-weight:normal;
+    }
+
+button{margin-top:20px;background:#f00;color:#fff;padding:15px;}
+</style>
+
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"> </script>
+
+<script type="text/javascript">
+      $(document).ready(function(){
+        $("#firstImageContent").css("display", "none");
+        $("#secondImageContent").css("display", "none");
+        $("#thirdImageContent").css("display", "none");
+      });
+    </script>
+<head>
+    <div class = "radioHead">
+<input type="radio" id="html" name="fav_language" value="HTML" onclick="lowRiskChecked()">
+<label for="html">Medium Risk: text-based CAPTCHA</label>
+<input type="radio" id="css" name="fav_language" value="CSS" onclick="highRiskChecked()">
+<label for="css">High Risk: image-based CAPTCHA v1</label><br>
+<input type="radio" id="css" name="fav_language" value="CSS" onclick="superhighRiskChecked()">
+<label for="css">High Risk: image-based CAPTCHA v3</label><br>
+
+</div>
+</head>
+
+<body>
+<div id="firstImageContent">
+
+<div class="regInput2">
+        <div id="captcha2">
+            <img class="cItem2" width="300" height="150"/>
+        </div>
+
+</div>
+<br><br>
+
+<div class="textInput">
+    <input type="text" id="text" name="text" size="40"/><br><br>
+    <button onclick="validateHuman_l()">Submit</button>
+</div>
+
+
+<!--<button onclick="validateHuman()">See if you are human</button>-->
+</div>
+
+<div id="secondImageContent">
+    <div class="regLabel">Are You a Human?</div>
+<div class="regDesc">
+    Please drag-and-drop these items into<br />the correct order, largest-smallest
+</div>
+<div class="regInput">
+        <div id="captcha">
+            <img class="cItem"/>
+            <img class="cItem"/>
+            <img class="cItem"/>
+        </div>
+</div>
+<button onclick="validateHuman_h()">See if you are human</button>
+</div>
+</body>
+
+<div id="thirdImageContent">
+    <div class="regLabel">Are You a Human?</div>
+<div class="regDesc">
+    Please drag-and-drop these animal into<br />the correct order, largest-smallest
+</div>
+<div class="regInput3">
+        <div id="captcha3">
+            <img class="cItem3"/>
+            <img class="cItem3"/>
+            <img class="cItem3"/>
+        </div>
+</div>
+<button onclick="validateHuman_s()">See if you are human</button>
+</div>
+</body>
+
+
+<script>
+
+    lowRiskChecked=function() {
+        document.getElementById('firstImageContent')
+                .style.display = "block";
+                document.getElementById('secondImageContent')
+                .style.display = "none";
+                document.getElementById('thirdImageContent')
+                .style.display = "none";
+
+    }
+    highRiskChecked=function() {
+        document.getElementById('firstImageContent')
+                        .style.display = "none";
+                        document.getElementById('secondImageContent')
+                        .style.display = "block";
+                        document.getElementById('thirdImageContent')
+                        .style.display = "none";
+
+
+    }
+    superhighRiskChecked=function() {
+        document.getElementById('firstImageContent')
+                        .style.display = "none";
+                        document.getElementById('secondImageContent')
+                        .style.display = "none";
+                        document.getElementById('thirdImageContent')
+                        .style.display = "block";
+
+
+    }
+
+
+    validateHuman_s=function(){
+        alert(  (checkHuman_s() ? "You are a human being. Congratulations.": "Damn cyborgs!")  );
+    }
+
+    validateHuman_h=function(){
+        alert(  (checkHuman_h() ? "You are a human being. Congratulations.": "Damn cyborgs!")  );
+    }
+
+    validateHuman_l=function(){
+        alert(  (checkHuman_l() ? "You are a human being. Congratulations.": "Damn cyborgs!")  );
+    }
+
+
+     checkHuman_l=function(){
+        var word = document.getElementById("text").value;
+        true_word = $('.cItem2')[0].src.split("/").at(-1).split("_").at(0);
+        console.log(true_word)
+        return true_word.toLowerCase() == word.toLowerCase()
+    }
+
+    checkHuman_h=function(){
+        var s='';
+        $('.cItem').each(function(){
+            s+= $(this)[0].src.split("/").at(-2);
+        });
+        return (s=="largemediumsmall");
+    }
+
+    checkHuman_s=function(){
+        var s='';
+        $('.cItem3').each(function(){
+            s+= $(this)[0].src.split("/").at(-2);
+        });
+        return (s=="largemediumsmall");
+    }
+
+    getImagePath_s=function(category, size){
+        const pic_files = ["1.jpg","2.jpg","3.jpg"];
+        var pic_index = Math.floor(Math.random() * 3) ;
+        var pic_file_name = pic_files[pic_index];
+        var imagePath="./images/"+category+"/"+size+"/"+pic_file_name;
+        return imagePath
+    }
+
+    getImagePath_h=function(category, size){
+        const pic_files = ["1.jpg","2.jpg","3.jpg","4.jpg"];
+        var pic_index = Math.floor(Math.random() * 4) ;
+        var pic_file_name = pic_files[pic_index];
+        var imagePath="./images/"+category+"/"+size+"/"+pic_file_name;
+        return imagePath
+    }
+
+
+    getImagePath_l =function(){
+
+
+        const pic_files = ["0AW9_1.png","2DYO1N_1.png","BFEWY_1.png","CXTGP_1.png"];
+        var pic_index = Math.floor(Math.random() * 4) ;
+        var pic_file_name = pic_files[pic_index];
+        var imagePath="./images/letters/"+pic_file_name;
+        return imagePath
+    }
+
+    $.fn.randomize = function(childElem) {
+      return this.each(function() {
+          var $this = $(this);
+          var elems = $this.children(childElem);
+
+          elems.sort(function() { return (Math.round(Math.random())-0.5); });
+
+          $this.remove(childElem);
+
+          for(var i=0; i < elems.length; i++)
+            $this.append(elems[i]);
+
+      });
+    }
+
+    $('#captcha').sortable();
+    $('#captcha').disableSelection();
+    $('#captcha').fadeIn('slow');
+
+    $('#captcha3').sortable();
+    $('#captcha3').disableSelection();
+    $('#captcha3').fadeIn('slow');
+
+
+    window.onload = function(){
+           const categories = ["fruit", "animal"];
+           var category_index = Math.floor(Math.random() * 2) ;
+           var category = categories[category_index];
+           document.getElementsByClassName("cItem")[0].src=getImagePath_h(category,"small");
+           document.getElementsByClassName("cItem")[1].src=getImagePath_h(category, "large");
+           document.getElementsByClassName("cItem")[2].src=getImagePath_h(category, "medium");
+
+           document.getElementsByClassName("cItem3")[0].src=getImagePath_s("animal_aug","small");
+           document.getElementsByClassName("cItem3")[1].src=getImagePath_s("animal_aug", "large");
+           document.getElementsByClassName("cItem3")[2].src=getImagePath_s("animal_aug", "medium");
+
+           document.getElementsByClassName("cItem2")[0].src=getImagePath_l();
+
+       };
+
+    while(checkHuman_h()){
+        $("div#captcha").randomize("img");
+    }
+    while(checkHuman_s()){
+        $("div#captcha3").randomize("img");
+    }
+</script>
+
+</html>
